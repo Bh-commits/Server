@@ -17,8 +17,7 @@ export const transporter = isMailerConfigured
 
 export async function sendMail({ to, subject, html, text }) {
   if (!transporter) {
-    console.warn(`Email skipped: ${subject}`);
-    return null;
+    throw new Error('Email service is not configured');
   }
 
   return transporter.sendMail({

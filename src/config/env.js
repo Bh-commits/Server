@@ -14,12 +14,16 @@ export const env = {
   adminPassword: process.env.ADMIN_PASSWORD || 'ChangeMe123!',
   adminName: process.env.ADMIN_NAME || 'IdeaClap Admin',
   smtp: {
-    host: process.env.SMTP_HOST,
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: Number(process.env.SMTP_PORT || 587),
     secure: process.env.SMTP_SECURE === 'true',
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-    from: process.env.MAIL_FROM || 'IdeaClap India <notifications@ideaclapindia.com>'
+    user: process.env.EMAIL_USER || process.env.SMTP_USER,
+    pass: process.env.EMAIL_PASS || process.env.SMTP_PASS,
+    from:
+      process.env.MAIL_FROM ||
+      (process.env.EMAIL_USER || process.env.SMTP_USER
+        ? `IdeaClap India <${process.env.EMAIL_USER || process.env.SMTP_USER}>`
+        : 'IdeaClap India <notifications@ideaclapindia.com>')
   },
   cloudinary: {
     cloudName: process.env.CLOUDINARY_CLOUD_NAME,

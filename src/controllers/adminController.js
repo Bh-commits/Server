@@ -1,6 +1,6 @@
 import { Blog } from '../models/Blog.js';
 import { Career } from '../models/Career.js';
-import { JobApplication } from '../models/JobApplication.js';
+import { CareerApplication } from '../models/CareerApplication.js';
 import { Lead } from '../models/Lead.js';
 import { Portfolio } from '../models/Portfolio.js';
 import { Service } from '../models/Service.js';
@@ -17,7 +17,7 @@ const resources = {
   testimonials: Testimonial,
   leads: Lead,
   subscribers: Subscriber,
-  applications: JobApplication
+  applications: CareerApplication
 };
 
 function getModel(resource) {
@@ -81,7 +81,7 @@ export const analytics = asyncHandler(async (req, res) => {
       Service.countDocuments(),
       Subscriber.countDocuments(),
       Testimonial.countDocuments(),
-      JobApplication.countDocuments()
+      CareerApplication.countDocuments()
     ]);
 
   res.json({

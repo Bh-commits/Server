@@ -51,6 +51,13 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    message: 'IdeaClap India API is running'
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
